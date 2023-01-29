@@ -7,7 +7,6 @@ tasks.getByName("jar") {
 }
 
 dependencies {
-    implementation(project(":clients:client-example"))
     implementation(project(":common:enum"))
     implementation(project(":common:util"))
     implementation(project(":common:error"))

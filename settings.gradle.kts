@@ -1,11 +1,10 @@
-rootProject.name = "example-project"
+rootProject.name = "spring-study"
 
 include(
     "api-server",
     "common:enum",
     "common:util",
     "common:error",
-    "clients:client-example",
     "domain",
     "storage:rdb",
     "support:logging"

@@ -6,7 +6,6 @@ spring:
     import:
       - logging.yml
       - storage-rdb.yml
-      - client-example.yml
 ---
 spring.config.activate.on-profile: local
 

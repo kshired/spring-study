@@ -1,5 +1,6 @@
 package com.kshired.spring.study.domain.member
 
+import com.kshired.spring.study.common.error.BadRequestException
 import com.kshired.spring.study.domain.member.command.MemberCreateCommand
 import com.kshired.spring.study.domain.member.command.MemberUpdateCommand
 
@@ -10,7 +11,7 @@ data class Member(
     var password: String
 ) {
     companion object {
-        fun from(memberCreateRequest: MemberCreateCommand) : Member {
+        fun from(memberCreateRequest: MemberCreateCommand): Member {
             return Member(
                 id = 0,
                 email = memberCreateRequest.email,
@@ -22,7 +23,11 @@ data class Member(
 
     fun update(memberUpdateCommand: MemberUpdateCommand) {
         memberUpdateCommand.password?.let {
-            password = it
+            if (password == memberUpdateCommand.originalPassword) {
+                password = it
+            } else {
+                throw BadRequestException("이전 비밀번호가 일치하지 않습니다.")
+            }
         }
 
         memberUpdateCommand.nickname?.let {

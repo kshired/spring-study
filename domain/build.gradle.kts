@@ -3,4 +3,5 @@ dependencies {
     implementation(project(":common:util"))
     implementation(project(":common:error"))
     implementation("org.springframework:spring-context")
+    implementation("org.springframework:spring-tx")
 }

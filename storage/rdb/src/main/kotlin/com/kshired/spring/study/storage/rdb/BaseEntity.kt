@@ -9,15 +9,14 @@ import org.hibernate.annotations.UpdateTimestamp
 import java.time.ZonedDateTime
 
 @MappedSuperclass
-internal abstract class BaseEntity {
+internal abstract class BaseEntity(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long = 0
+    val id: Long? = null,
 
     @CreationTimestamp
-    val createdAt: ZonedDateTime? = null
+    val createdAt: ZonedDateTime? = null,
 
     @UpdateTimestamp
-    var updatedAt: ZonedDateTime? = null
-        protected set
-}
+    val updatedAt: ZonedDateTime? = null
+)

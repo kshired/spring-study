@@ -4,12 +4,18 @@ import com.kshired.spring.study.domain.member.Member
 import com.kshired.spring.study.storage.rdb.BaseEntity
 import jakarta.persistence.Column
 import jakarta.persistence.Entity
+import jakarta.persistence.GeneratedValue
+import jakarta.persistence.GenerationType
+import jakarta.persistence.Id
 import jakarta.persistence.Table
 
 @Entity
 @Table(name = "member")
 internal class MemberEntity(
-    id: Long = 0,
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "member_id")
+    val id: Long,
 
     @Column(name = "email")
     val email: String,
@@ -19,7 +25,7 @@ internal class MemberEntity(
 
     @Column(name = "password")
     var password: String,
-) : BaseEntity(id = id) {
+) : BaseEntity() {
     companion object {
         fun fromDomain(member: Member): MemberEntity {
             return MemberEntity(
@@ -38,7 +44,7 @@ internal class MemberEntity(
 
     fun toDomain(): Member {
         return Member(
-            id = id!!,
+            id = id,
             email = email,
             nickname = nickname,
             password = password

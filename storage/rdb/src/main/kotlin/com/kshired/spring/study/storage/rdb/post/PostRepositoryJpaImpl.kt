@@ -10,7 +10,7 @@ internal class PostRepositoryJpaImpl(
     private val postJpaRepository: PostJpaRepository
 ) : PostRepository {
     override fun save(post: Post): Long {
-        return postJpaRepository.save(PostEntity.fromDomain(post)).id!!
+        return postJpaRepository.save(PostEntity.fromDomain(post)).id
     }
 
     override fun findByIdOrNull(id: Long): Post? {

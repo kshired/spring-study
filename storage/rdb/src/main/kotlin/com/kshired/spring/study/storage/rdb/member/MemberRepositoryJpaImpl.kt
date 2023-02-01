@@ -10,7 +10,7 @@ internal class MemberRepositoryJpaImpl(
     private val memberJpaRepository: MemberJpaRepository
 ) : MemberRepository {
     override fun save(member: Member): Long {
-        return memberJpaRepository.save(MemberEntity.fromDomain(member)).id!!
+        return memberJpaRepository.save(MemberEntity.fromDomain(member)).id
     }
 
     override fun update(member: Member) {
